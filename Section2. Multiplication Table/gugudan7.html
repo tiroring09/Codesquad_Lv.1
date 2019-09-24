@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>구구단</h2>
+    <p>입력할 단 수 (2~9): <input id = "input" type="text" name="" value="">
+      <input type="button" name="" value="실행" onclick=gugudan()>
+      <!-- 같은 기능<button type="button" name="button" onclick=gugudan()>실행</button> -->
+      <br>
+    <script>
+      function gugudan(){
+        var y = Number(document.getElementById("input").value);
+        if(isNaN(y) || y < 2 || y > 9){
+          alert("2~9 사이의 숫자를 입력하세요.");
+        }else{
+          document.write(y+" 단<br>");
+          for(i=1; i<10; i=i+1){
+            document.write(y+" * "+i+" = "+y*i+"<br>");
+          }
+        }
+        //여기서 isNaN때문에 엄청 고생했다.ㅠㅠ
+        //과제: 일회용이 아니라 다회용으로 쓸 수 있도록 만들어보자.
+      }
+    </script>
+    </p>
+  </body>
+</html>
