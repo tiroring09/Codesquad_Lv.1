@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>Prime Number 소수판별</h2>
+    <script>
+      var x = Number(prompt("type number"));
+      var d = 1;
+      var count = 0;
+
+      while(d <= x){
+        if(x%d === 0){
+          count = count + 1;
+        }
+        d = d+1;
+      }
+
+      if(count <= 2){
+        document.write(x+"은(는) 소수입니다.");
+      }else{
+        document.write(x+"은(는) 소수가 아닙니다.");
+      }
+
+
+    </script>
+    <!-- var isPrime = true;
+    var y = Number(prompt("type number"));
+    for(var i = 2; i < y; i++){
+      if(y % i === 0 ){
+        isPrime = false;
+        break;
+      }
+      console.log(isPrime, i);
+    }
+
+    if(isPrime){
+      document.write(y+"은(는) 소수입니다.");
+    }else{
+      document.write(y+"은(는) 소수가 아닙니다.");
+    } -->
+  </body>
+</html>
