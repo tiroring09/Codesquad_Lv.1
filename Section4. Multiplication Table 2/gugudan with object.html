@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>객체를 활용하여 구구단 구현하기</h1>
+    <script>
+      var gugudan = {};
+      gugudan.numArray = [];
+
+      gugudan.pushNum = function(num){
+        for(var i = 1; i < 10; i++){
+          this.numArray[i-1] = num * i;
+        }
+        //return this.numArray;
+      }
+      //값을 리턴할 필요도 없네..? 자동으로 객체의 배열에 저장되기 때문인가?
+      gugudan.print = function(){
+        document.write("<h2>" + this.numArray[0] + "단</h2>");
+        for(i = 0; i < this.numArray.length; i++){
+          document.write(this.numArray[i] + "<br>");
+        }
+      }
+
+      function main(){
+        for(var j = 2; j < 10; j++){
+          gugudan.pushNum(j);
+          gugudan.print();
+        }
+      }
+
+      main();
+    </script>
+
+  </body>
+</html>

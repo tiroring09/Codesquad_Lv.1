@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>함수 사용해 보기</h1>
+    <script>
+      function main(){
+        for(var i = 2; i < 10; i++){
+          //이곳 또한 var를 써서 i를 선언해주지 않으면, 아래에 있는 gugudan()함수 내의 반복문과 변수 충돌이 일어나는 듯 하다.
+          var result = gugudan(i);
+          // var를 "써서" 변수 result를 선언해야 한다.
+          printResult(i, result);
+        }
+      }
+
+      function gugudan(x){
+        var ret = [];
+        // 배열을 이 위치에서 생성해야만 하는 이유는??
+        for(var i = 1; i < 10; i++){
+          ret.push(x * i);
+        }
+        return ret;
+      }
+
+      function printResult(x, ret){
+        document.write("<h2>" + x + "단</h2>");
+        for(i = 0; i < ret.length; i++){
+          document.write(x + " * " + (i+1) + " = " + ret[i]+ "<br>");
+        }
+      }
+
+      main();
+    </script>
+
+  </body>
+</html>

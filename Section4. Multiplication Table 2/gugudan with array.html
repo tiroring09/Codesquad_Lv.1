@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+
+    var start = function(num){
+      var numSaved = [];
+      console.log(num + "단")
+      for(i=1; i<10; i++){
+        numSaved.push(num * i);
+      }
+      for(i=0; i<numSaved.length; i++){
+        console.log(numSaved[i]);
+      }
+    }
+
+    var start2 = function(num){
+      document.getElementById("result").innerHTML = num+"단<br>"
+      var numSaved = [];
+      for(i=1; i<10; i++){
+        numSaved.push(num * i);
+      }
+      for(i=0; i<numSaved.length; i++){
+        document.getElementById("result").innerHTML = document.getElementById("result").innerHTML+ numSaved[i]+"<br>";
+      }
+    }
+
+
+    </script>
+  </head>
+  <body>
+    <h1>Multiplication with Array</h1>
+    <h2>구구단을 콘솔 및 HTML에 출력하는 프로그램</h2>
+    <p>
+    몇 단?: <input id="guguNum" type="text" name="" value="">
+    <br>
+    <!-- id 선언이 getElementById 앞에 먼저 되어있어야 함! 꼭그렇지많은 않네 씨발어쩌라는거야-->
+    <input type="button" name="" value="콘솔출력" onclick=start(Number(document.getElementById("guguNum").value))>
+    <input type="button" name="" value="HTML출력" onclick=start2(Number(document.getElementById("guguNum").value))>
+    <div id="result"></div>
+    </p>
+
+  </body>
+</html>
