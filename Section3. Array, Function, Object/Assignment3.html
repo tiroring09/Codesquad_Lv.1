@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>소수 출력하기</h1>
+    <p>
+      <input type="button" name="" value="시작!" onclick= start()><br>
+      1에서 10000 사이의 소수를 화면에 출력하는 프로그램.
+
+
+      <script>
+        var start = function(){
+          var number = [];
+          var numberPrime = [];
+
+          for(i=1; i<100+1; i++){
+            number.push(i);
+            var varId = [];
+            for(j=1; j<i; j++){
+              if(i%j === 0){
+                varId.push(1);
+              }
+              if(varId.length === 2){
+                break;
+              }
+            }
+            if(varId.length === 1){
+              <!-- console.log(i+"는 소수"); -->
+              numberPrime.push(i);
+
+            }else{
+              <!-- console.log(i+"는 소수아님"); -->
+
+            }
+          }
+
+          for(k=0; k<numberPrime.length; k++){
+            document.write(numberPrime[k]+"<br>");
+          }
+        }
+      </script>
+
+    </p>
+  </body>
+</html>

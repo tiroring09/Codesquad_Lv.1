@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script>
+      var prime = {}
+      prime.number = [];
+      prime.numberPrime = [];
+      prime.varId = [];
+      
+      prime.start = function(number){
+        this.addnumber(number);
+        for(i=1; i<number+1; i++){
+          this.identifier(i);
+        }
+        this.printPrime();
+      };
+
+      prime.addnumber = function(number){
+        for(i=1; i<number+1; i++){
+          this.number.push(i);
+        }
+      };
+
+      prime.identifier = function(number){
+        this.varId = [];
+        for(j=1; j<number; j++){
+          if(number%j === 0){
+            this.varId.push(1);
+          }
+          if(this.varId.length === 2){
+            break;
+          }
+        }
+        if(this.varId.length === 1){
+          this.numberPrime.push(number);
+        }
+      };
+
+      prime.printPrime = function(){
+        for(k=0; k<this.numberPrime.length; k++){
+          document.write(this.numberPrime[k]+"<br>");
+        }
+      };
+
+    </script>
+  </head>
+  <body>
+    <h1>소수 출력하기</h1>
+    <p>
+      <input type="button" name="" value="시작!" onclick= prime.start(100)><br>
+      1에서 10000 사이의 소수를 화면에 출력하는 프로그램.
+
+    </p>
+  </body>
+</html>
