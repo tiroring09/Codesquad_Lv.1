@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>추가미션: 난이도 있는 문제 구현하기</h1>
+    몇 단의 몇까지?("숫자, 숫자" 형식으로 입력)<br>
+    <input id="numInput" type="text" name="" value="">
+    <input type="button" name="" value="실행" onclick=gugu.main()><br>
+
+    <script>
+    var gugu = {};
+    gugu.inputSaved = [];
+    gugu.numSaved = [];
+
+    gugu.cal = function(input1, input2){
+      for(var i = 0; i < input2; i++){
+        gugu.numSaved[i] = input1 * (i + 1);
+      }
+    }
+
+    gugu.convert = function(id){
+      gugu.inputSaved = document.getElementById(id).value.split(",");
+      gugu.inputSaved[0] = Number(gugu.inputSaved[0]);
+      gugu.inputSaved[1] = Number(gugu.inputSaved[1]);
+    }
+
+    gugu.print = function(){
+      for(var i = 0; i < gugu.inputSaved[1]; i++){
+        document.write(gugu.numSaved[i] + "<br>");
+      }
+    }
+
+    gugu.main = function(){
+      gugu.convert("numInput");
+      for(var i = 1; i < gugu.inputSaved[0]; i++){
+        gugu.cal(i + 1, gugu.inputSaved[1]);
+        document.write("<h3>" + (i + 1) + "단</h3>");
+        gugu.print();
+      }
+    }
+    </script>
+
+  </body>
+</html>

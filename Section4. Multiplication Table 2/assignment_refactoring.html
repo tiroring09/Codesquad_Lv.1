@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>추가미션: 난이도 있는 문제 구현하기</h1>
+    몇 단의 몇까지?("숫자, 숫자" 형식으로 입력)<br>
+    <input id="numInput" type="text" name="" value="">
+    <input type="button" name="" value="실행" onclick=gugu.main()><br>
+    <p><div id="result"></div>
+    </p>
+    <script>
+    var gugu = {};
+    gugu.inputSaved = [];
+    gugu.numSaved = [];
+
+    gugu.cal = function(input1, input2){
+      for(var i = 0; i < input2; i++){
+        this.numSaved[i] = input1 * (i + 1);
+      }
+    }
+
+    gugu.convert = function(id){
+      this.inputSaved = document.getElementById(id).value.split(",");
+      this.inputSaved[0] = Number(this.inputSaved[0]);
+      this.inputSaved[1] = Number(this.inputSaved[1]);
+    }
+
+    gugu.printDetail = function(){
+      for(var i = 0; i < this.inputSaved[1]; i++){
+        var y;
+        y = this.numSaved[0];
+        y += " * ";
+        y += (i + 1);
+        y += " = ";
+        document.getElementById('result').innerHTML += y + this.numSaved[i] + "<br>"
+      }
+    }
+
+    gugu.printHead = function(){
+      var x = "<h1>" + this.inputSaved[0] + this.inputSaved[1] + "단 결과</h1>";
+      document.getElementById('result').innerHTML += x
+    }
+
+    gugu.printHead2 = function(i){
+      document.getElementById('result').innerHTML += "<h3>" + (i + 1) + "단</h3>";
+    }
+
+    gugu.main = function(){
+      this.convert("numInput");
+      this.printHead();
+      for(var i = 1; i < this.inputSaved[0]; i++){
+        this.cal(i + 1, this.inputSaved[1]);
+        this.printHead2(i);
+        this.printDetail();
+      }
+    }
+
+    //refactoring 1 details:
+    //gugu >> this
+    //출력창의 가독성 향상
+    //document.write("");를 대신하고 싶어서 검색.
+    //document.getElementById("result").innerHTML =
+    //document.getElementById("result").innerHTML +=
+    //print함수 세분화
+    </script>
+
+  </body>
+</html>
