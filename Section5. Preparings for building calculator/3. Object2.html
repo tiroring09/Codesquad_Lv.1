@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <script>
+    // var p1 = {"name": "hunux", "eat": function(food){}};
+    // //p1이라는 객체를 만들었지
+
+    var Human = function(name, hp, power) {
+      this.name = name;
+      this.hp = hp;
+      this.power = power;
+      this.attack = function(target) {
+        target.hp -= this.power;
+      };
+      this.show = function() {
+        console.log("%s %d %d %d",this.name, this.hp, this.mp, this.power);
+      };
+      this.eat = function(food){
+
+      };
+    };
+    //같은 구조의 객체를 반복적으로 찍어낼 수 있는 생성자
+
+    var m1 = new Human("pride", 100, 10);
+    var m2 = new Human("see", 999, 1);
+
+    var Food = function(name, energy){
+      this.name = name;
+      this.energy = energy;
+      this.feed = function(human){
+        human.hp += this.energy;
+      };
+    };
+
+    var d = new Food('doughnut', 30);
+  </script>
+
+  </body>
+</html>
