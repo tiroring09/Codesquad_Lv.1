@@ -41,6 +41,7 @@
 
     gugu.printHead = function(){
       var x = "<h1>" + this.inputSaved[0] + this.inputSaved[1] + "단 결과</h1>";
+      document.getElementById('result').innerHTML = "";
       document.getElementById('result').innerHTML += x
     }
 
@@ -58,13 +59,6 @@
       }
     }
 
-    //refactoring 1 details:
-    //gugu >> this
-    //출력창의 가독성 향상
-    //document.write("");를 대신하고 싶어서 검색.
-    //document.getElementById("result").innerHTML =
-    //document.getElementById("result").innerHTML +=
-    //print함수 세분화
     </script>
 
   </body>
