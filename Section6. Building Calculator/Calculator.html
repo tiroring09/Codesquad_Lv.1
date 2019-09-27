@@ -8,6 +8,12 @@
     <h1>String Calculator</h1>
     <h2>Input</h2>
     <input id="userInput1" type="text" name="" value="12">
+    <select id="operator" class="" name="">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
     <input id="userInput2" type="text" name="" value="2">
     <input type="button" name="" value="execute" onclick=main()><br>
     <h2>Result</h2>
@@ -15,26 +21,59 @@
 
   <script>
     var cal = {};
-    cal.inputSplit = [];
+    cal.inputNumSaved = [];
+    cal.resultSaved = [];
     cal.inputPrcs = function(){
       var x = Number(document.getElementById("userInput1").value);
       var y = Number(document.getElementById("userInput2").value);
-      cal.inputSplit[0] = x;
-      cal.inputSplit[1] = y;
+      cal.inputNumSaved[0] = x;
+      cal.inputNumSaved[1] = y;
+    };
+
+    cal.prcs = function(){
+      var x = document.getElementById("operator").value;
+      console.log(x);
+      switch(x){
+        case "+":
+          cal.resultSaved[0] = cal.inputNumSaved[0] + cal.inputNumSaved[1];
+        break;
+        case "-":
+          cal.resultSaved[0] = cal.inputNumSaved[0] - cal.inputNumSaved[1];
+        break;
+        case "*":
+          cal.resultSaved[0] = cal.inputNumSaved[0] * cal.inputNumSaved[1];
+        break;
+        case "/":
+          cal.resultSaved[0] = cal.inputNumSaved[0] / cal.inputNumSaved[1];
+        break;
+        default:
+      };
+    };
+
+    // cal.print = function(){
+    //   console.log("function print is running");
+    //   var x = document.getElementById("finalResult");
+    //   x.innerHTML = "function print is running<br>";
+    //   x.innerHTML += cal.inputNumSaved[0] + cal.inputNumSaved[1] + "<br>";
+    //   x.innerHTML += cal.inputNumSaved[0] - cal.inputNumSaved[1] + "<br>";
+    //   x.innerHTML += cal.inputNumSaved[0] * cal.inputNumSaved[1] + "<br>";
+    //   x.innerHTML += cal.inputNumSaved[0] / cal.inputNumSaved[1] + "<br>";
+    // };
+
+    cal.print2 = function(){
+      console.log("function print2 is running");
+      x = document.getElementById("finalResult");
+      x.innerHTML = cal.resultSaved[0];
     };
 
     function main(){
       cal.inputPrcs();
-
-      console.log("function main is running");
-      var x = document.getElementById("finalResult")
-      x.innerHTML = "function main is running<br>";
-      x.innerHTML += cal.inputSplit[0] + cal.inputSplit[1] + "<br>";
-      x.innerHTML += cal.inputSplit[0] - cal.inputSplit[1] + "<br>";
-      x.innerHTML += cal.inputSplit[0] * cal.inputSplit[1] + "<br>";
-      x.innerHTML += cal.inputSplit[0] / cal.inputSplit[1] + "<br>";
+      cal.prcs();
+      cal.print2();
     };
+
     //두 개의 인풋창을 통해 변수를 입력 받아서; 각각 숫자변환 후에; 배열에 저장한 후; 사칙연산 계산하여 출력한다.
+    //선택박스 추가함을 통해 사칙연산 중 수행할 연산을 선택하여 결과를 출력할 수 있게 했다.
   </script>
   </body>
 </html>
