@@ -7,30 +7,34 @@
   <body>
     <h1>String Calculator</h1>
     <h2>Input</h2>
-    <input id="userInput" type="text" name="" value="14+2-4*6/2">
-    <input type="button" name="" value="execute"><br>
+    <input id="userInput1" type="text" name="" value="12">
+    <input id="userInput2" type="text" name="" value="2">
+    <input type="button" name="" value="execute" onclick=main()><br>
     <h2>Result</h2>
     <div id="finalResult"></div>
 
   <script>
     var cal = {};
     cal.inputSplit = [];
-
     cal.inputPrcs = function(){
-      var x = document.getElementById("userInput").value;
-      var y = x.split("");
-      cal.inputSplit = y;
+      var x = Number(document.getElementById("userInput1").value);
+      var y = Number(document.getElementById("userInput2").value);
+      cal.inputSplit[0] = x;
+      cal.inputSplit[1] = y;
     };
 
     function main(){
+      cal.inputPrcs();
+
       console.log("function main is running");
       var x = document.getElementById("finalResult")
       x.innerHTML = "function main is running<br>";
-      x.innerHTML += 12 + 2 + "<br>";
-      x.innerHTML += 12 - 2 + "<br>";
-      x.innerHTML += 12 * 2 + "<br>";
-      x.innerHTML += 12 / 2 + "<br>";
+      x.innerHTML += cal.inputSplit[0] + cal.inputSplit[1] + "<br>";
+      x.innerHTML += cal.inputSplit[0] - cal.inputSplit[1] + "<br>";
+      x.innerHTML += cal.inputSplit[0] * cal.inputSplit[1] + "<br>";
+      x.innerHTML += cal.inputSplit[0] / cal.inputSplit[1] + "<br>";
     };
+    //두 개의 인풋창을 통해 변수를 입력 받아서; 각각 숫자변환 후에; 배열에 저장한 후; 사칙연산 계산하여 출력한다.
   </script>
   </body>
 </html>
