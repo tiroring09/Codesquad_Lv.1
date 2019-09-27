@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>String Calculator</h1>
+    <h2>Input</h2>
+    <input id="userInput" type="text" name="" value="14+2-4*6/2">
+    <input type="button" name="" value="execute"><br>
+    <h2>Result</h2>
+    <div id="finalResult"></div>
+
+  <script>
+    var cal = {};
+    cal.inputSplit = [];
+
+    cal.inputPrcs = function(){
+      var x = document.getElementById("userInput").value;
+      var y = x.split("");
+      cal.inputSplit = y;
+    };
+
+    function main(){
+      console.log("function main is running");
+      var x = document.getElementById("finalResult")
+      x.innerHTML = "function main is running<br>";
+      x.innerHTML += 12 + 2 + "<br>";
+      x.innerHTML += 12 - 2 + "<br>";
+      x.innerHTML += 12 * 2 + "<br>";
+      x.innerHTML += 12 / 2 + "<br>";
+    };
+  </script>
+  </body>
+</html>
