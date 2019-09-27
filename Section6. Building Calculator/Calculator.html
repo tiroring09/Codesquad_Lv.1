@@ -16,6 +16,7 @@
     </select>
     <input id="userInput2" type="text" name="" value="2">
     <input type="button" name="" value="execute" onclick=main()><br>
+
     <h2>Result</h2>
     <div id="finalResult"></div>
 
@@ -64,6 +65,7 @@
       console.log("function print2 is running");
       x = document.getElementById("finalResult");
       x.innerHTML = cal.resultSaved[0];
+      document.getElementById("userInput1").value = cal.resultSaved[0];
     };
 
     function main(){
