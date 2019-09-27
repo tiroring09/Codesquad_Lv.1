@@ -22,11 +22,7 @@
     <div id="resultPage"></div>
 
   <script>
-    var cal = {};
-    cal.inputNumSaved = [];
-    cal.resultSaved = [];
-
-    //강의에서는 함수를 생성할 때, 항상 return을 사용했었다. return값이 어떤 식으로 연결되는지 지켜봅시다. 그리고 return 뒤에는 등호`=` 없음!
+    var cal = {resultSaved:"", inputNumSaved:[] };
 
     cal.inputPrcs = function(id){
       return Number(document.getElementById(id).value);
@@ -37,37 +33,29 @@
       var y = cal.inputNumSaved[arrayNum1];
       var z = cal.inputNumSaved[arrayNum2];
       switch(x){
-        case "+":
-          return y + z;
-        break;
-        case "-":
-          return y - z;
-        break;
-        case "*":
-          return y * z;
-        break;
-        case "/":
-          return y / z;
-        break;
+        case "+": return y + z; break;
+        case "-": return y - z; break;
+        case "*": return y * z; break;
+        case "/": return y / z; break;
         default:
       };
     };
 
-    cal.print2 = function(arrayNum){
-      document.getElementById("resultPage").innerHTML += cal.resultSaved[arrayNum] + "<br>";
-      document.getElementById("userInput1").value = cal.resultSaved[arrayNum];
+    cal.print = function(result){
+      document.getElementById("resultPage").innerHTML += result + "<br>";
+      document.getElementById("userInput1").value = result;
     };
 
     cal.main = function(){
       cal.inputNumSaved[0] = cal.inputPrcs("userInput1");
       cal.inputNumSaved[1] = cal.inputPrcs("userInput2");
-      cal.resultSaved[0] = cal.prcs("operator", 0, 1);
-      cal.print2(0);
+      cal.resultSaved = cal.prcs("operator", 0, 1);
+      cal.print(cal.resultSaved);
     };
 
     cal.logClear = function(id){
       document.getElementById(id).innerHTML = "";
-    }
+    };
   </script>
   </body>
 </html>
