@@ -3,46 +3,95 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      #result{
+        background-color: darkblue;
+        width: 150px;
+        padding: 10px;
+        font-family: courier;
+        font-size: 20px;
+        color: white;
+      }
+      #oprtResult{
+        background-color: darkblue;
+        width: 150px;
+        padding: 10px;
+        font-family: courier;
+        font-size: 20px;
+        color: white;
+      }
+      button{
+        font-size: 20px;
+        background-color: grey;
+        width: 40px;
+        height: 40px;
+        margin: 5px;
+      }
+    </style>
+
   </head>
   <body>
     <h1>GUI Calculator; JS based</h1>
     <div>
       <div id="result">0</div>
+      <div id="oprtResult"></div>
       <div id="btnLine1">
-        <button id='7' onclick=clickNum()>7</button>
-        <button id='8' onclick=clickNum()>8</button>
-        <button id='9' onclick=clickNum()>9</button>
+        <button id='7' onclick=cal.clickNum()>7</button>
+        <button id='8' onclick=cal.clickNum()>8</button>
+        <button id='9' onclick=cal.clickNum()>9</button>
+        <button id='plus' onclick=cal.clickOprt()>+</button>
       </div>
 
       <div id="btnLine2">
-        <button id='4' onclick=clickNum()>4</button>
-        <button id='5' onclick=clickNum()>5</button>
-        <button id='6' onclick=clickNum()>6</button>
+        <button id='4' onclick=cal.clickNum()>4</button>
+        <button id='5' onclick=cal.clickNum()>5</button>
+        <button id='6' onclick=cal.clickNum()>6</button>
+        <button id='minus' onclick=cal.clickOprt()>-</button>
       </div>
 
       <div id="btnLine3">
-        <button id='1' onclick=clickNum()>1</button>
-        <button id='2' onclick=clickNum()>2</button>
-        <button id='3' onclick=clickNum()>3</button>
-        <button id='0' onclick=clickNum()>0</button>
+        <button id='1' onclick=cal.clickNum()>1</button>
+        <button id='2' onclick=cal.clickNum()>2</button>
+        <button id='3' onclick=cal.clickNum()>3</button>
+        <button id='multiply' onclick=cal.clickOprt()>*</button>
       </div>
 
       <div id="btnLine4">
-        <button id='plus' onclick=clickOprt()>+</button>
-        <button id='minus' onclick=clickOprt()>-</button>
-        <button id='multiply' onclick=clickOprt()>*</button>
-        <button id='division' onclick=clickOprt()>/</button>
-        <button id='equal' onclick=clickOprt()>=</button>
-        <button id='del' onclick=clickOprt()>del</button>
+        <button id='del' onclick=cal.clickNum()>del</button>
+        <button id='0' onclick=cal.clickNum()>0</button>
+        <button id='equal' onclick=showResult()>=</button>
+        <button id='division' onclick=cal.clickOprt()>/</button>
+
+
       </div>
     </div>
 
     <script>
-      var clickNum = function(){
-        console.log(event.target.innerHTML);
+      var cal = {inputArray:[]};
+
+      cal.clickNum = function(){
+        var x = event.target.innerHTML;
+        console.log(x);
+        if(x === 'del'){
+          cal.inputArray.pop();
+          console.log(cal.inputArray.join(''));
+          //del키를 누르면 inputArray에 들어간 숫자를 지우게 했다.
+          document.getElementById("result").innerHTML = cal.inputArray.join("");
+        }else{
+          cal.inputArray.push(x);
+          console.log(cal.inputArray.join(""));
+          //join을 써서 inputArray에 들어간 것들을 하나의 문자열로 출력했다.
+          document.getElementById("result").innerHTML = cal.inputArray.join("");
+        };
       };
 
-      var clickOprt = function(){
+      cal.clickOprt = function(){
+        var x = event.target.innerHTML;
+        console.log(x);
+        document.getElementById("oprtResult").innerHTML = x
+      }
+
+      var showResult = function(){
         console.log(event.target.innerHTML);
       };
     </script>
