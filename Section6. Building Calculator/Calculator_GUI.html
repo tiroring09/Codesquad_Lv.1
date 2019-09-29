@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>GUI Calculator; JS based</h1>
+    <div>
+      <div id="result">0</div>
+      <div id="btnLine1">
+        <button id='7' onclick=clickNum()>7</button>
+        <button id='8' onclick=clickNum()>8</button>
+        <button id='9' onclick=clickNum()>9</button>
+      </div>
+
+      <div id="btnLine2">
+        <button id='4' onclick=clickNum()>4</button>
+        <button id='5' onclick=clickNum()>5</button>
+        <button id='6' onclick=clickNum()>6</button>
+      </div>
+
+      <div id="btnLine3">
+        <button id='1' onclick=clickNum()>1</button>
+        <button id='2' onclick=clickNum()>2</button>
+        <button id='3' onclick=clickNum()>3</button>
+        <button id='0' onclick=clickNum()>0</button>
+      </div>
+
+      <div id="btnLine4">
+        <button id='plus' onclick=clickOprt()>+</button>
+        <button id='minus' onclick=clickOprt()>-</button>
+        <button id='multiply' onclick=clickOprt()>*</button>
+        <button id='division' onclick=clickOprt()>/</button>
+        <button id='equal' onclick=clickOprt()>=</button>
+        <button id='del' onclick=clickOprt()>del</button>
+      </div>
+    </div>
+
+    <script>
+      var clickNum = function(){
+        console.log(event.target.innerHTML);
+      };
+
+      var clickOprt = function(){
+        console.log(event.target.innerHTML);
+      };
+    </script>
+
+  </body>
+</html>
