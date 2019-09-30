@@ -57,10 +57,11 @@
       </div>
 
       <div id="btnLine4">
-        <button id='del' onclick=cal.clickNum()>del</button>
+        <button id='clear' onclick=cal.clickOprt()>C</button>
         <button id='0' onclick=cal.clickNum()>0</button>
-        <button id='equal' onclick=showResult()>=</button>
+        <button id='backSpace' onclick=cal.clickOprt()>BS</button>
         <button id='division' onclick=cal.clickOprt()>/</button>
+        <button id='equal' onclick=cal.showResult()>=</button>
 
 
       </div>
@@ -72,27 +73,41 @@
       cal.clickNum = function(){
         var x = event.target.innerHTML;
         console.log(x);
-        if(x === 'del'){
-          cal.inputArray.pop();
-          console.log(cal.inputArray.join(''));
-          //del키를 누르면 inputArray에 들어간 숫자를 지우게 했다.
-          document.getElementById("result").innerHTML = cal.inputArray.join("");
-        }else{
-          cal.inputArray.push(x);
-          console.log(cal.inputArray.join(""));
-          //join을 써서 inputArray에 들어간 것들을 하나의 문자열로 출력했다.
-          document.getElementById("result").innerHTML = cal.inputArray.join("");
-        };
+        cal.inputArray.push(Number(x));
+        console.log(cal.inputArray.join(""));
+        //join을 써서 inputArray에 들어간 것들을 하나의 문자열로 출력했다.
+        document.getElementById("result").innerHTML = cal.inputArray.join("");
       };
 
       cal.clickOprt = function(){
         var x = event.target.innerHTML;
         console.log(x);
-        document.getElementById("oprtResult").innerHTML = x
-      }
+        switch(x){
+          case "+":
+            cal.inputArray.push(x);
+          break;
+          case "-":
+            cal.inputArray.push(x);
+          break;
+          case "*":
+            cal.inputArray.push(x);
+          break;
+          case "/":
+            cal.inputArray.push(x);
+          break;
+          case "C":
+            cal.inputArray = [];
+          break;
+          case "BS":
+            cal.inputArray.pop();
+          break;
+        };
+        document.getElementById("result").innerHTML = cal.inputArray.join("");
+      };
 
-      var showResult = function(){
+      cal.showResult = function(){
         console.log(event.target.innerHTML);
+
       };
     </script>
 
