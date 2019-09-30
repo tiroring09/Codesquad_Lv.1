@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>String Calculator Inline Version</h1>
+    <h2>Instructions</h2>
+    <p>Type numbers & operators into input box below <br>
+      SPLIT each elements by SPACE(ex. 1_+_1). <br>
+      연산자는 우선순위 없이 순차적으로 계산됩니다.<br>
+      Smash execute button & Enjoy it!
+    </p>
+
+    <input id="inputTag" type="text" name="" value="1 + 10 + 100 + 1000 + 10000">
+    <button type="button" name="button" onclick = cal.main() >Execute</button>
+
+    <script>
+      var cal = {numArray: [], oprtArray: [], oprtNum: ""};
+
+      cal.main = function(){
+        cal.pushInput("inputTag");
+        var x = document.getElementById("resultPage")
+        x.innerHTML += cal.calPrcs() + "<br>"
+      };
+
+      cal.pushInput = function(id){
+        cal.numArray = [];
+        cal.oprtArray = [];
+        cal.oprtNum = "";
+        var x = document.getElementById(id).value.split(" ");
+        //console.log("최초입력을 분할한 결과" + x);
+        for(var i = 0; i < x.length; i++){
+          if(x[i] === "+" || x[i] === "-" || x[i] === "*" || x[i] === "/"){
+            cal.oprtArray.push(x[i]);
+          }else{
+            cal.numArray.push(Number(x[i]));
+          };
+        };
+        cal.oprtNum = cal.oprtArray.length;
+        //console.log("숫자배열에 저장된 수" + cal.numArray);
+        //console.log("연산자배열에 저장된 문자" + cal.oprtArray)
+        //console.log("연산자배열에 저장된 문자의 갯수" + cal.oprtNum)
+      };
+
+      cal.calPrcs = function(){
+        for(var i = 0; i < cal.oprtNum ; i++){
+          //console.log(i + 1 + "번째 연산");
+          var x = cal.numArray.shift(0);
+          var y = cal.numArray.shift(0);
+          var z = cal.oprtArray.shift(0);
+          switch(z){
+            case "+": cal.numArray.unshift(x + y); break;
+            case "-": cal.numArray.unshift(x - y); break;
+            case "*": cal.numArray.unshift(x * y); break;
+            case "/": cal.numArray.unshift(x / y); break;
+            default: cal.numArray.unshift(x);
+          };
+        };
+        return cal.numArray.shift(0);
+      };
+
+      cal.clear = function(){
+        document.getElementById("resultPage").innerHTML = "";
+      };
+    </script>
+
+    <h2>Result Log</h2>
+    <button type="button" name="button" onclick=cal.clear()>Clear</button>
+    <div id = "resultPage"></div>
+  </body>
+</html>

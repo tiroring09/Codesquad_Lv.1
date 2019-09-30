@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>String Calculator</h1>
+    <h2>Input</h2>
+    <input id="userInput1" type="text" value="12">
+    <select id="operator" class="" name="">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input id="userInput2" type="text" value="4">
+    <input type="button" name="" value="execute" onclick=cal.main()><br>
+
+    <h2>Result Log</h2>
+    <input type="button" name="" value="clear" onclick=cal.logClear("resultPage")>
+    <div id="resultPage"></div>
+
+  <script>
+    var cal = {resultSaved:"", inputNumSaved:[] };
+
+    cal.inputPrcs = function(id){
+      return Number(document.getElementById(id).value);
+    };
+
+    cal.prcs = function(operatorId, arrayNum1, arrayNum2){
+      var x = document.getElementById(operatorId).value;
+      var y = this.inputNumSaved[arrayNum1];
+      var z = this.inputNumSaved[arrayNum2];
+      switch(x){
+        case "+": return y + z; break;
+        case "-": return y - z; break;
+        case "*": return y * z; break;
+        case "/": return y / z; break;
+        default:
+      };
+    };
+
+    cal.print = function(result){
+      document.getElementById("resultPage").innerHTML += result + "<br>";
+      document.getElementById("userInput1").value = result;
+    };cal
+
+    cal.main = function(){
+      this.inputNumSaved[0] = this.inputPrcs("userInput1");
+      this.inputNumSaved[1] = this.inputPrcs("userInput2");
+      this.resultSaved = this.prcs("operator", 0, 1);
+      this.print(this.resultSaved);
+    };
+
+    cal.logClear = function(id){
+      document.getElementById(id).innerHTML = "";
+    };
+  </script>
+  </body>
+</html>

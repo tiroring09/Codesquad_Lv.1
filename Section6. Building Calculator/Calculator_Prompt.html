@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>String Calculator</h1>
+    <button type="button" name="button" onclick=promMain()>prompt</button>
+
+    <h2>Result</h2>
+    <div id="finalResult"></div>
+
+  <script>
+    var cal = {};
+    cal.inputNumSaved = [];
+    cal.resultSaved = [];
+
+    function promMain(){
+      cal.resultSaved[0] = "";
+
+      while(true){
+        var y = prompt("type number 1 or type 'q' if want to quit", cal.resultSaved[0]);
+        if(y === "q"){
+          document.getElementById("finalResult").innerHTML = cal.resultSaved[0];
+          break;
+        }else{
+          cal.inputNumSaved[0]= Number(y);
+          var x = prompt("type operator in (+, -, *, /)");
+          cal.inputNumSaved[1]= Number(prompt("type number 2"));
+          switch(x){
+          case "+":
+            cal.resultSaved[0] = cal.inputNumSaved[0] + cal.inputNumSaved[1];
+          break;
+          case "-":
+            cal.resultSaved[0] = cal.inputNumSaved[0] - cal.inputNumSaved[1];
+          break;
+          case "*":
+            cal.resultSaved[0] = cal.inputNumSaved[0] * cal.inputNumSaved[1];
+          break;
+          case "/":
+            cal.resultSaved[0] = cal.inputNumSaved[0] / cal.inputNumSaved[1];
+          break;
+          default:
+          };
+        };
+        alert("result :" + cal.resultSaved[0]);
+      };
+    };
+  </script>
+  </body>
+</html>
