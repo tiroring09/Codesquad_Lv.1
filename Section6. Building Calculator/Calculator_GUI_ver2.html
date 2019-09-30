@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      #result{
+        height: 23px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>GUI Calculator; JS based</h1>
+    <h2><a href="https://blog.cordelia273.space/32">강의 출처</a></h2>
+    이렇게 간단할 수가...<br>
+    ver.1 차이점은 1) 배열로 입력을 받지 않고, 바로 화면에 출력한다. 2) eval함수를 사용하여 연산처리한다.<br>
+    남은과제 - 연산자 두 번 입력 방지. - UI개선 -
+    <div>
+      <div id="result"></div>
+      <div id="btnLine1">
+        <button id='7' onclick=cal.clickNum()>7</button>
+        <button id='8' onclick=cal.clickNum()>8</button>
+        <button id='9' onclick=cal.clickNum()>9</button>
+        <button id='plus' onclick=cal.clickNum()>+</button>
+      </div>
+
+      <div id="btnLine2">
+        <button id='4' onclick=cal.clickNum()>4</button>
+        <button id='5' onclick=cal.clickNum()>5</button>
+        <button id='6' onclick=cal.clickNum()>6</button>
+        <button id='minus' onclick=cal.clickNum()>-</button>
+      </div>
+
+      <div id="btnLine3">
+        <button id='1' onclick=cal.clickNum()>1</button>
+        <button id='2' onclick=cal.clickNum()>2</button>
+        <button id='3' onclick=cal.clickNum()>3</button>
+        <button id='multiply' onclick=cal.clickNum()>*</button>
+      </div>
+
+      <div id="btnLine4">
+        <button id='clear' onclick=cal.remove()>C</button>
+        <button id='0' onclick=cal.clickNum()>0</button>
+        <button id='backSpace' onclick=cal.remove()>BS</button>
+        <button id='division' onclick=cal.clickNum()>/</button>
+        <button id='equal' onclick=cal.showResult()>=</button>
+      <div id="resultLog"></div>
+
+      </div>
+    </div>
+
+    <script>
+      //var numberClicked = false;
+      //이 전역변수를 선언한 이유: 연산자를 연속으로 두 번 입력하지 않게끔 하는 역할. 아 어렵다
+      var cal = {};
+
+      cal.clickNum = function(){
+        var x = event.target.innerHTML;
+        console.log(x);
+        document.getElementById("result").innerHTML += x;
+      };
+
+      cal.remove = function(){
+        var x = event.target.innerHTML;
+        var y = document.getElementById("result")
+        switch(x){
+          case "C":
+            y.innerHTML = "";
+            document.getElementById("resultLog").innerHTML = "";
+          break;
+          case "BS":
+            y.innerHTML = y.innerHTML.slice(0,y.innerHTML.length-1);
+          break;
+        };
+      };
+
+      cal.showResult = function(){
+        console.log(event.target.innerHTML);
+        var x = document.getElementById("result").innerHTML;
+        document.getElementById("resultLog").innerHTML += x + " = " + eval(x) + "<br>";
+        document.getElementById("result").innerHTML = eval(x);
+      };
+    </script>
+
+  </body>
+</html>
