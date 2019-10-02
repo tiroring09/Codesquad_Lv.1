@@ -32,6 +32,7 @@
   </head>
   <body>
     <h1>GUI Calculator; JS based</h1>
+    <p>모든 입력과 출력 및 내부 연산은 가상의 배열을 통해서 이루어지도록 구현되었음.</p>
     <div>
       <div id="result">0</div>
       <div id="oprtResult"></div>
@@ -72,16 +73,14 @@
 
       cal.clickNum = function(){
         var x = event.target.innerHTML;
-        console.log(x);
         cal.inputArray.push(Number(x));
-        console.log(cal.inputArray.join(""));
-        //join을 써서 inputArray에 들어간 것들을 하나의 문자열로 출력했다.
+        //클릭한 숫자를 숫자타입으로 바꾸어서 배열에 넣는다.
         document.getElementById("result").innerHTML = cal.inputArray.join("");
+        //join을 써서 inputArray에 들어간 것들을 하나의 문자열로 바꿔준 후에, 화면에 출력
       };
 
       cal.clickOprt = function(){
         var x = event.target.innerHTML;
-        console.log(x);
         switch(x){
           case "+":
             cal.inputArray.push(' ' + x + ' ');
@@ -105,9 +104,38 @@
         document.getElementById("result").innerHTML = cal.inputArray.join("");
       };
 
-      cal.showResult = function(){
-        console.log(event.target.innerHTML);
+      cal.prcs = function(){
+        var x = cal.inputArray.join("").split(" ");
+        //inputArray 배열을 하나의 문자열로 합친 후, 띄어쓰기 기준으로 분할해서 배열로 재구성한 후, x에 저장
+        for(var i = 0; i < x.length; i++){
+          if(x[i] === "+" || x[i] === "-" || x[i] === "*" || x[i] === "/"){
+          }else{
+            x[i] = Number(x[i]);
+          };
+        };
+        //x에서 숫자만 숫자타입으로 변환
 
+        for(x.length; x.length > 2;){
+          var num1 = x.shift();
+          var op = x.shift();
+          var num2 = x.shift();
+
+          switch(op){
+            case "+": x.unshift(num1 + num2); break;
+            case "-": x.unshift(num1 - num2); break;
+            case "*": x.unshift(num1 * num2); break;
+            case "/": x.unshift(num1 / num2); break;
+          };
+        };
+        //x의 갯수가 3개일때까지는 실행, 2개미만이면 실행하지마!
+        //x에서 3개를 빼오고, 연산자에 따라 계산해서 x의 0번째로 다시 넣어준다.
+        cal.inputArray = [x[0]];
+        //모든 계산이 완료된 후, x배열의 값 inputArray배열에 반환, 동시에 기존 inputArray값들은 날아감
+      };
+
+      cal.showResult = function(){
+        cal.prcs();
+        document.getElementById("result").innerHTML = cal.inputArray.join("");
       };
     </script>
 
