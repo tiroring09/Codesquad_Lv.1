@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      p{
+        font-size: 20px;
+      }
+      button{
+        font-size: 20px;
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>밀어내기 퍼즐 구현1</h1>
+    <div>
+      <p id='word'>HELLO</p>
+      <div id='button'></div>
+      <div id='cmds'>
+        <button onclick=handler()>뒤집기</button>
+        <button onclick=handler()>밀어내기</button>
+      </div>
+      <p id='check'>일치합니다.</p>
+    </div>
+
+    <script>
+      let str = document.getElementById('word').innerHTML;
+      let strArray = str.split("");
+      for(let i = 0; i < strArray.length; i++){
+        document.getElementById('button').innerHTML += '<button type="button" name="button">' + strArray[i] +'</button>'
+      };
+      //'word'로부터 텍스트를 가져와서 - 분할하여 배열에 넣어준 후 - 'button'구역에 배열갯수만큼 버튼형식으로 알파벳들 추가
+      function handler(){
+        console.log(event.target.innerHTML);
+      }
+    </script>
+
+  </body>
+</html>
